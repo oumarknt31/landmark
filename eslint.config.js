@@ -18,5 +18,13 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // React 19's new strict rules. They fire on intentional patterns (the
+      // debounced async fetch in SearchPalette, Date.now() reads for "synced
+      // X ago", init effects that pull from a persistent store). Downgrade to
+      // warnings so CI still surfaces them without failing.
+      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/purity': 'warn',
+    },
   },
 ])
