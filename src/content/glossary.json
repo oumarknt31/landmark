@@ -1,0 +1,104 @@
+{
+  "terms": [
+    {
+      "term": "pointer",
+      "definition": "A variable that holds the memory address of another variable. Dereferencing it with `*` reads the value at that address."
+    },
+    {
+      "term": "reference",
+      "definition": "An alias for an existing variable. Unlike a pointer, a reference must be bound at initialisation and cannot be reseated."
+    },
+    {
+      "term": "recursion",
+      "definition": "A function that calls itself. Every recursive function needs a base case, a condition under which it stops recurring, or it runs forever."
+    },
+    {
+      "term": "inheritance",
+      "definition": "A mechanism where a class (the derived class) acquires properties and methods from another (the base class). It is the “is-a” relationship in OOP."
+    },
+    {
+      "term": "polymorphism",
+      "definition": "The ability of objects of different types to be used through a common interface. In C++ this is achieved with virtual functions."
+    },
+    {
+      "term": "encapsulation",
+      "definition": "Bundling data with the methods that operate on it, and exposing only what the outside world needs. Implemented in C++ via the `private` / `public` access keywords."
+    },
+    {
+      "term": "template",
+      "definition": "A blueprint that lets a function or class operate on multiple types. The compiler generates a concrete version for each type that actually gets used."
+    },
+    {
+      "term": "exception",
+      "definition": "A runtime signal that something unusual has happened. Thrown with `throw`, caught with `catch`, and unwinds the call stack until handled."
+    },
+    {
+      "term": "constructor",
+      "definition": "A special member function called automatically when an object of a class is created. Its job is to bring the object into a valid initial state."
+    },
+    {
+      "term": "destructor",
+      "definition": "A special member function called automatically when an object goes out of scope or is deleted. Used to release resources the object owns."
+    },
+    {
+      "term": "virtual function",
+      "definition": "A member function declared with the `virtual` keyword. Calls to it resolve at runtime based on the object's actual type, enabling polymorphism."
+    },
+    {
+      "term": "abstract class",
+      "definition": "A class that contains at least one pure virtual function. It cannot be instantiated directly, only inherited from."
+    },
+    {
+      "term": "namespace",
+      "definition": "A named scope for declarations. Used to avoid name collisions, e.g. `std::cout` vs a hypothetical `mylib::cout`."
+    },
+    {
+      "term": "const",
+      "definition": "A qualifier promising that a variable's value won't be modified through that name. Lets the compiler enforce invariants and unlocks optimisations."
+    },
+    {
+      "term": "iterator",
+      "definition": "An object that points into a container (vector, list, map, ...) and can be advanced to walk through elements. The STL's universal traversal mechanism."
+    },
+    {
+      "term": "STL",
+      "definition": "The Standard Template Library, C++'s built-in collection of generic containers (vector, map, set, ...) and algorithms (sort, find, ...)."
+    },
+    {
+      "term": "memory leak",
+      "definition": "Dynamically allocated memory (via `new`) that the program never releases. Over time it consumes resources until the process is restarted."
+    },
+    {
+      "term": "stack",
+      "definition": "The region of memory managed automatically by the compiler for local variables and function call frames. Allocation is fast and deallocation is automatic."
+    },
+    {
+      "term": "heap",
+      "definition": "The region of memory used for dynamic allocations (`new` / `malloc`). The programmer is responsible for releasing it (`delete` / `free`)."
+    },
+    {
+      "term": "dereference",
+      "definition": "Reading or writing the value at the address a pointer holds. In C++, the unary `*` operator dereferences a pointer."
+    },
+    {
+      "term": "null pointer",
+      "definition": "A pointer that intentionally points to no object (`nullptr`). Dereferencing one is undefined behaviour and typically crashes the program."
+    },
+    {
+      "term": "limit",
+      "definition": "The value a function approaches as its input approaches some value. The foundation of calculus, derivatives and integrals are both defined via limits."
+    },
+    {
+      "term": "derivative",
+      "definition": "The instantaneous rate of change of a function with respect to its input. Geometrically, the slope of the tangent line at a point."
+    },
+    {
+      "term": "integral",
+      "definition": "The accumulated total of a function's values over an interval. Geometrically, the signed area between the curve and the axis."
+    },
+    {
+      "term": "continuity",
+      "definition": "A function is continuous at a point if the limit of the function at that point equals the function's value there. Intuitively: no jumps."
+    }
+  ]
+}

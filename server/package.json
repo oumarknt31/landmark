@@ -1,0 +1,23 @@
+{
+  "name": "landmark-server",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "@supabase/supabase-js": "^2.74.0",
+    "dotenv": "^17.2.4",
+    "hono": "^4.10.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.3",
+    "tsx": "^4.22.1",
+    "typescript": "^6.0.3"
+  }
+}

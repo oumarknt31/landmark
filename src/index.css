@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Whole site is one font. All three Tailwind family variables point at the
+     same monospace stack so utilities collapse to the same render. */
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans: var(--font-mono);
+  --font-serif: var(--font-mono);
+
+  /* Parchment / 1980s reference manual palette. Light paper, warm dark text,
+     rust accent. The retro vibe comes from the monospace + ASCII furniture,
+     not from a glowing CRT background. */
+  --color-paper: #f4e7c5;       /* warm parchment */
+  --color-ink: #3a2818;         /* dark cocoa */
+  --color-accent: #b8410e;      /* rust / burnt orange (primary CTA) */
+  --color-rule: #d4c19b;        /* tan, for thin borders */
+  --color-muted: #8c7560;       /* warm grey-brown for secondary text */
+  --color-danger: #b03020;      /* deeper red, for wrong answers */
+  --color-string: #4a6a2a;      /* olive, for code strings */
+  --color-code-bg: #ebd8a6;     /* slightly darker parchment for code blocks */
+
+  /* New section colors. Still parchment-aged hues — no neon, no Crayola. */
+  --color-success: #5d7e2a;     /* olive-green, correct answers + chapter 1 */
+  --color-info: #2f5e8c;        /* muted navy ink, used for lessons + lesson CTAs */
+  --color-highlight: #c89a3c;   /* mustard, used for XP / leaderboard / streaks */
+  --color-purple: #6e4a7e;      /* dusty plum, used for chapter 3 + special features */
+
+  /* Tinted background colors derived from the section colors — light enough
+     to lay over parchment without losing contrast. */
+  --tint-accent: rgba(184, 65, 14, 0.08);
+  --tint-success: rgba(93, 126, 42, 0.10);
+  --tint-info: rgba(47, 94, 140, 0.10);
+  --tint-highlight: rgba(200, 154, 60, 0.14);
+  --tint-purple: rgba(110, 74, 126, 0.10);
+
+  /* Dark amber palette retained for future swap. */
+  --color-paper-dark: #1a1208;
+  --color-ink-dark: #ffb000;
+}
+
+html,
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 15.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Very faint paper texture — a subtle repeating noise via two crossed
+   gradients. Just enough to break up flat color without distraction. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(58, 40, 24, 0.02) 2px,
+      rgba(58, 40, 24, 0.02) 3px
+    );
+}
+
+/* Blinking caret used after the hero typewriter. */
+@keyframes terminal-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  background: var(--color-ink);
+  margin-left: 2px;
+  animation: terminal-blink 1.05s steps(1) infinite;
+  vertical-align: text-bottom;
+}
+.caret::before {
+  content: '\00a0';
+}
+
+/* Code highlighting on parchment: rust keywords, olive strings, dim italic
+   comments. Three distinct levels of contrast that all read clearly against
+   the slightly-darker code-block background. */
+.hljs-keyword,
+.hljs-built_in,
+.hljs-type,
+.hljs-literal,
+.hljs-meta {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.hljs-string,
+.hljs-number,
+.hljs-regexp {
+  color: var(--color-string);
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--color-muted);
+  font-style: italic;
+}
+.hljs-title,
+.hljs-function,
+.hljs-name {
+  color: var(--color-ink);
+}
+
+/* Inputs blend into the parchment. */
+input,
+textarea,
+button {
+  font-family: var(--font-mono);
+}
+input,
+textarea {
+  caret-color: var(--color-accent);
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+/* Buttons, links, and any interactive elements get the terminal pointer. */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Active-state nudge for any element using `.term-press`. Cheap to opt into. */
+.term-press {
+  transition: transform 75ms ease-out, background-color 75ms ease-out;
+}
+.term-press:active {
+  transform: translateY(1px);
+}
+
+/* Floating "+1" animation used when the score ticks up on a correct answer. */
+@keyframes float-up {
+  0%   { opacity: 1; transform: translate(0, 0); }
+  100% { opacity: 0; transform: translate(0, -1.4rem); }
+}
+.animate-float-up {
+  animation: float-up 700ms ease-out forwards;
+}
+
+/* Brief flash when a keyboard shortcut fires. */
+@keyframes key-flash {
+  0%   { background: var(--color-accent); color: var(--color-paper); }
+  100% { background: transparent; }
+}
+.animate-key-flash {
+  animation: key-flash 220ms ease-out;
+}
+
+/* Slide-in for the option > cursor when an option is selected. */
+@keyframes cursor-slide {
+  from { transform: translateX(-4px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.animate-cursor-slide {
+  animation: cursor-slide 120ms ease-out;
+}
+
+/* Subtle background tint for the quiz card to lift it off the page. */
+.term-card {
+  border: 1px solid var(--color-rule);
+  background: rgba(184, 65, 14, 0.035);
+  padding: 1.5rem;
+}
+
+/* Card flip + lift for landing-page tiles. Used on the two big choices. */
+.tile {
+  position: relative;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+.tile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--color-rule);
+}
+.tile:active {
+  transform: translate(0, 0);
+  box-shadow: 1px 1px 0 0 var(--color-rule);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--color-rule);
+  margin: 1.5rem 0;
+}
+
+/* Code-block background is a slightly-darker parchment so the code stands out
+   from running prose without breaking the manual aesthetic. */
+.lesson-body pre {
+  background: var(--color-code-bg);
+  border-color: var(--color-rule);
+}

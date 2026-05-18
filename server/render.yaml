@@ -1,0 +1,29 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Run "Apply Blueprint" in the Render dashboard and point at this file.
+# You'll still need to set the secret env vars (Supabase + Anthropic) in the
+# dashboard; they're marked `sync: false` below so they're never committed.
+
+services:
+  - type: web
+    name: landmark-server
+    runtime: node
+    rootDir: landmark-web/server
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: EXPLAIN_RATE_CAPACITY
+        value: '60'
+      - key: EXPLAIN_RATE_REFILL
+        value: '60'

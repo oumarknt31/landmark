@@ -1,0 +1,13 @@
+[project]
+name = "landmark-python-server"
+version = "0.1.0"
+description = "Python microservice for Landmark: semantic search, analytics, AI question generation."
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
