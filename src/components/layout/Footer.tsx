@@ -18,7 +18,7 @@ export default function Footer() {
         <p className="mt-2">
           Source on{' '}
           <a
-            href="https://github.com/oumarknt31/Landmark-Learning-App-Optimized-"
+            href="https://github.com/oumarknt31/landmark"
             className="text-[var(--color-ink)] underline decoration-[var(--color-rule)] underline-offset-4 hover:decoration-[var(--color-accent)]"
             target="_blank"
             rel="noreferrer"
