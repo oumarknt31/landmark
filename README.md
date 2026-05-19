@@ -4,6 +4,12 @@
 
 Originally a C++/Qt desktop honors project at BMCC (Fall 2023). Rebuilt in 2026 as a polyglot web app to learn the modern stack end-to-end.
 
+## Demo
+
+**[Try it live](https://landmark-vert.vercel.app/)** &middot; [Watch the video walkthrough](https://youtu.be/xlHCib6wEoM)
+
+[![Landmark demo video](https://img.youtube.com/vi/xlHCib6wEoM/maxresdefault.jpg)](https://youtu.be/xlHCib6wEoM)
+
 ## Stack at a glance
 
 | Layer | Tech |
