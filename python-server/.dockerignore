@@ -1,0 +1,13 @@
+.venv
+__pycache__
+*.pyc
+.env
+.env.*
+*.log
+.DS_Store
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.model_cache
+# `content/` is intentionally NOT ignored — it's populated by the
+# pre-deploy script and baked into the image.

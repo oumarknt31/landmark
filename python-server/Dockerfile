@@ -21,5 +21,11 @@ RUN python -c "from sentence_transformers import SentenceTransformer; \
 
 COPY src ./src
 
+# Lesson + quiz content. Populated by `scripts/prepare-python-deploy.sh`
+# before `fly deploy` (the React app's src/content is outside this Docker
+# build context, so we copy it into python-server/content/ first).
+COPY content ./content
+ENV CONTENT_DIR=./content
+
 EXPOSE 8000
 CMD ["sh", "-c", "uvicorn src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
