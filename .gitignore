@@ -28,10 +28,6 @@ __pycache__/
 .mypy_cache/
 .model_cache/
 
-# Deploy artifact: populated by scripts/prepare-python-deploy.sh.
-# The canonical source is src/content/.
-python-server/content/
-
 # Playwright
 /test-results/
 /playwright-report/
