@@ -10,6 +10,8 @@ Originally a C++/Qt desktop honors project at BMCC (Fall 2023). Rebuilt in 2026 
 
 [![Landmark demo video](https://img.youtube.com/vi/xlHCib6wEoM/maxresdefault.jpg)](https://youtu.be/xlHCib6wEoM)
 
+> **Scope of the live deployment.** The live URL runs the frontend, Supabase auth + sync, hybrid search in keyword mode, and the offline-capable PWA build. The Python service (semantic search via sentence-transformers, pandas analytics, Anthropic-backed question generation) runs locally for demos &mdash; hosting `torch` + `sentence-transformers` comfortably needs ~1 GB RAM, which exceeds the Vercel and Render free tiers I'm using. The code lives in [`python-server/`](./python-server) and the architecture is documented below; the video walkthrough exercises both deployed and local features.
+
 ## Stack at a glance
 
 | Layer | Tech |
